@@ -1,0 +1,530 @@
+$negro: black;
+$blanco: white !default;
+
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+@font-face {
+  font-family: fuente1;
+  src: url(fuente1.ttf);
+}
+
+@font-face {
+  font-family: cursiva;
+  src: url(letraPegada.ttf);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #1f1e1e;
+  color: rgb(235, 244, 234);
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body,
+html {
+  scroll-behavior: smooth;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+// =============================header============================
+.main-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1e1e;
+  // padding: 10px;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  margin-left: -100%;
+  transition: all 0.2s linear;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+}
+
+.main-nav.show {
+  margin-left: 0;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: 100%;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.link-item {
+  margin-top: 2rem;
+  color: #c5c1c1;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+
+.link-item::after {
+  position: absolute;
+  content: "";
+  background-color: #c5c1c1;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  transition: 0.3s ease all;
+}
+
+.link-item:hover::after {
+  width: 100%;
+}
+
+.button-menu {
+  z-index: 200;
+  width: 40px;
+  height: 40px;
+  border: none;
+  display: flex;
+  background: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.button-menu span {
+  width: 37px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #444444;
+  border-radius: 3px;
+  transform-origin: 4px 0px;
+  transition: all 0.2s linear;
+}
+
+.button-menu.close span {
+  opacity: 1;
+  transform: rotate(45deg) translate(0px, 0px);
+  background: #ffffff;
+}
+
+.button-menu.close span:nth-child(2) {
+  transform: rotate(-45deg) translate(-11px, 5px);
+}
+
+.button-menu.close span:nth-child(3) {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .button-menu {
+    display: none;
+  }
+
+  .main-logo {
+    flex-basis: 30%;
+  }
+
+  .main-nav {
+    position: static;
+    margin-left: 0;
+    flex-basis: 70%;
+    height: 100%;
+  }
+
+  .nav-links {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #1f1e1e;
+  }
+
+  .link-item {
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 2rem;
+  }
+}
+
+// =========================banner==========================
+.banner {
+  background: rgb(10, 0, 0);
+  background: linear-gradient(0deg, rgba(10, 10, 10, 0.511) 14%, rgba(15, 14, 14, 0.597) 79%), url(img/herramientas.webp);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 90px;
+
+
+  h1 {
+    font-family: fuente1;
+    letter-spacing: 9px;
+    font-size: 60px;
+    color: rgba(239, 9, 9, 0.998);
+
+  }
+
+  .subtitle {
+    background-color: rgba(250, 235, 215, 0.404);
+    color: #1f1e1e;
+    font-size: 40px;
+    font-family: cursiva;
+    padding: 5px;
+    border-radius: 2px 20px;
+    letter-spacing: 6px;
+  }
+
+  a {
+    text-decoration: none;
+    color: aqua;
+    background: #333333;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #dd1818, #1f1e1e);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #dd1818, #1f1e1e);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    background: gray;
+  }
+
+  // =============================submenu=========================
+  #submenu {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+
+    div {
+      margin: 10px;
+      border: 1px groove;
+      padding: 5px;
+
+      h2 {
+        font-size: 20px;
+        border: 1px solid white;
+        border-radius: 5px;
+        padding: 5px;
+      }
+    }
+  }
+}
+
+// ==========================.container1======================
+.container1 {
+  @include flex;
+  padding: 0px;
+  scroll-margin-top: 40px;
+
+
+  h2 {
+    font-size: 40px;
+    color: red;
+    font-family: fuente1;
+    letter-spacing: 9px;
+
+  }
+
+  p {
+    max-width: 400px;
+    font-size: 30px;
+    font-weight: 100;
+    font-family: sans-serif;
+    text-align: center;
+    box-shadow: 0 0 10px red;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  img {
+    min-width: 300px;
+  }
+}
+
+// =============================services====================
+.title-services {
+  text-align: center;
+  font-size: 40px;
+  color: red;
+  font-family: fuente1;
+  letter-spacing: 9px;
+  scroll-margin-top: 50px;
+}
+
+.Servicios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 230px);
+  gap: 40px;
+  justify-content: center;
+  background-color: black;
+  padding: 30px;
+
+  .items {
+    border: 2px dotted rgb(238, 233, 233);
+    padding: 10px;
+    background-color: #1f1e1f;
+
+    h2 {
+      text-align: center;
+      color: red;
+    }
+
+  }
+}
+
+// =====================galeria==================
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 100%);
+  justify-content: center;
+
+  h3 {
+    color: rgb(247, 243, 243);
+    font-size: 40px;
+    font-weight: bolder;
+    letter-spacing: 9px;
+    background: #1f1e1e;
+    padding: 10px;
+    border-radius: 3px;
+  }
+
+  .foto1 {
+    background-image: url(img/barberia.webp);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+    @include flex();
+  }
+
+  .foto2 {
+    background-image: url(img/barba.webp);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+    @include flex();
+  }
+
+  .foto3 {
+    background-image: url(img/pareja.webp);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+    @include flex();
+  }
+
+  .foto4 {
+    background-image: url(img/nino.webp);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    height: 400px;
+    @include flex();
+  }
+}
+
+// ===========================ubicación====================
+
+.ubicacion {
+  text-align: center;
+  max-width: 100%;
+  min-width: 300px;
+  scroll-margin-top: 40px;
+  transition: ease-in .9s;
+
+  h5 {
+    font-size: 40px;
+  }
+}
+
+.watsapp {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+
+.flechaSubir {
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+}
+
+footer {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: center;
+  padding: 20px;
+
+  .link {
+    text-decoration: none;
+    color: green;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* ==============================banner============================  */
+  .banner {
+    padding: 5px;
+
+    h1 {
+      font-size: 15px;
+    }
+
+    .subtitle {
+      font-size: 30px;
+    }
+
+    a {
+      margin: 5px;
+    }
+
+    /* =============================submenu========================= */
+    #submenu {
+      div {
+        margin: 5px;
+        padding: 20px;
+
+        h2 {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+
+  /* ==========================.container1====================== */
+  .container1 {
+    padding: 10px;
+
+    h2 {
+      font-size: 25px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 25px;
+    }
+
+    img {
+      width: 200px;
+    }
+  }
+
+  /* =============================services==================== */
+  .title-services {
+    font-size: 30px;
+  }
+
+  .Servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100%);
+    gap: 30px;
+    justify-content: center;
+    padding: 10px;
+
+    .items {
+      h2 {
+        letter-spacing: 9px;
+      }
+
+    }
+  }
+
+  /* =====================galeria================== */
+  .galeria {
+    gap: 0px;
+
+    h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+  /* ===========================ubicación==================== */
+
+  .ubicacion {
+
+    h5 {
+      font-size: 30px;
+    }
+  }
+
+  .watsapp {
+    position: fixed;
+    right: 10px;
+    bottom: 30px;
+  }
+
+  .flechaSubir {
+    position: fixed;
+    left: 1px;
+    bottom: 10px;
+  }
+
+  // ===========================footer===================
+  footer {
+    .iconos {
+      h6 {
+        font-size: 17px;
+        letter-spacing: 6px;
+      }
+
+      img {
+        width: 50px;
+        margin: 5px;
+      }
+    }
+
+    .link {
+      text-decoration: none;
+      color: green;
+    }
+
+    .link:hover {
+      text-decoration: underline;
+    }
+  }
+
+}
